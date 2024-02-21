@@ -1,0 +1,49 @@
+$primary: #3e3ea0;
+$secondary: #34ebe5;
+
+:root {
+  --border-radius: 8px;
+  --border-width: 3px;
+  --page-padding: 15px;
+
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --primary-trans: #{$primary}90;
+  --secondary-trans: #{$secondary}94;
+  --background: white;
+  --section-background: rgb(231, 231, 231);
+  --card-background: rgb(221, 221, 221);
+
+  .darkmode {
+    --background: #293241;
+    --section-background: #343d4a;
+    --card-background: #343d4a;
+    --input-background: #293241;
+  }
+}
+.gradient-border {
+  border: var(--border-width) solid #0000;
+  border-radius: var(--border-radius);
+  background: linear-gradient(var(--background), var(--background)) padding-box,
+    linear-gradient(45deg, var(--secondary), var(--primary)) border-box;
+}
+.box-shadow {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+}
+body,
+html {
+  height: 100%;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.MuiContainer-root {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@import "./styles/pages";
+@import "./styles/mui-mods";
+@import "./styles/shapes";

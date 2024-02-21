@@ -1,0 +1,7 @@
+.home-page,
+.page {
+  display: flex;
+  flex-direction: column;
+  padding: var(--page-padding);
+  height: 100%;
+}

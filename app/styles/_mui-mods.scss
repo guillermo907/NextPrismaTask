@@ -1,0 +1,15 @@
+//Material Modal background
+.MuiModal-backdrop {
+  /*  background-color: var(--primary-trans);
+  background: linear-gradient(
+    to right,
+    var(--primary-trans),
+    var(--secondary-trans)
+  );
+  background-size: 180%; */
+}
+//Input fields
+.MuiInputBase-input,
+.MuiInputBase-root {
+  background: var(--input-background);
+}
