@@ -38,6 +38,7 @@ const Notes = async () => {
 
   const updateNote = async (id: number, title: string, content: string) => {
     "use server";
+    console.log("Recieved id: ", id);
     await prisma.task.update({
       where: {
         id: id,
@@ -47,6 +48,7 @@ const Notes = async () => {
         content: content,
       },
     });
+    revalidatePath("/notes");
   };
 
   const deleteNote = async (title: string) => {
@@ -70,7 +72,9 @@ const Notes = async () => {
   const renderNotes = async () => {
     const notes = await fetchNotes();
     return notes.map((note) => {
-      return <Card note={note} deleteNote={deleteNote} />;
+      return (
+        <Card note={note} deleteNote={deleteNote} updateNote={updateNote} />
+      );
     });
   };
 

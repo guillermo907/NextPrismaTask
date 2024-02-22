@@ -7,14 +7,15 @@ import { useState } from "react";
 type CardProps = {
   note: Note;
   deleteNote: (title: string) => void;
+  updateNote: (id: number, title: string, content: string) => void;
 };
 
-const Card: React.FC<CardProps> = ({ note, deleteNote }) => {
+const Card: React.FC<CardProps> = ({ note, deleteNote, updateNote }) => {
   console.log("Note: ", note);
   const [isEditMode, setIsEditMode] = useState(false);
   const [form, setForm] = useState({
     title: note?.title,
-    content: note?.content,
+    content: note.content || "",
   });
 
   const handleChange = (event: any) => {
@@ -22,6 +23,11 @@ const Card: React.FC<CardProps> = ({ note, deleteNote }) => {
       ...form,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const handleEditSubmit = () => {
+    updateNote(note.id, form.title, form.content);
+    setIsEditMode(false);
   };
 
   return (
@@ -57,6 +63,11 @@ const Card: React.FC<CardProps> = ({ note, deleteNote }) => {
         <Button color="primary" onClick={() => setIsEditMode(!isEditMode)}>
           {isEditMode ? "Cancel" : "Edit"}
         </Button>
+        {isEditMode && (
+          <Button variant="outlined" color="success" onClick={handleEditSubmit}>
+            Save
+          </Button>
+        )}
       </Stack>
     </div>
   );
